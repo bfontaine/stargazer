@@ -33,3 +33,12 @@ private message saying “enable”, and it should enable the reporting for you.
 ![](imgs/enable.png)
 
 You can later disable this by sending it “disable”.
+
+## Hacking
+
+**Stargazer** doesn’t currently have a public API. You can however contribute
+to this repository :)
+
+Make sure tests pass with the following command:
+
+    $ STARGAZER_TESTING=1 go test ./...

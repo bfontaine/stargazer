@@ -42,6 +42,7 @@ func main() {
 				log.Println("Connecting....")
 			case *slack.ConnectedEvent:
 				log.Println("Connected.")
+				slackInfo = rtm.GetInfo()
 			case *slack.MessageEvent:
 				if strings.HasPrefix(ev.Channel, "D") {
 					resp := gotDM(ev.Channel, ev.User, ev.Text)
@@ -70,6 +71,7 @@ func notify(s Star) {
 	msg, err := s.notification()
 	if err != nil {
 		log.Printf("Error: %v\n", err)
+		return
 	}
 
 	api.PostMessage(ch, msg, slackParams)
@@ -78,22 +80,29 @@ func notify(s Star) {
 var reEnableMsg = regexp.MustCompile(`\b(enable|yes|oui|want|please)\b`)
 var reDisableMsg = regexp.MustCompile(`\b(disable|no|non|stop|fuck you|go away)\b`)
 
+const (
+	enablingMessage  = "Got it! Happy stalking!"
+	enabledMessage   = "I already know that ;)"
+	disablingMessage = "OK got it. I won't disturb you anymore."
+	disabledMessage  = "I didn’t want to disturb anyway."
+)
+
 func gotDM(channel, user, text string) string {
 	if reEnableMsg.MatchString(strings.ToLower(strings.TrimSpace(text))) {
 		if _, ok := whitelist[user]; ok {
-			return "I already know that ;)"
+			return enabledMessage
 		}
 
 		whitelist[user] = struct{}{}
-		return "Got it! Happy stalking!"
+		return enablingMessage
 
 	} else if reDisableMsg.MatchString(text) {
 		if _, ok := whitelist[user]; !ok {
-			return "I didn’t want to disturb anyway."
+			return disabledMessage
 		}
 
 		delete(whitelist, user)
-		return "OK got it. I won't disturb you anymore."
+		return disablingMessage
 	}
 
 	return ""

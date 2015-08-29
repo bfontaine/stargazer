@@ -7,10 +7,12 @@ import (
 	"github.com/nlopes/slack"
 )
 
+// A Message is a starred message
 type Message struct {
 	User, Channel, Text, Timestamp string
 }
 
+// A Star is a star on Slack.
 type Star struct {
 	Added     bool
 	User      string
@@ -50,6 +52,6 @@ func (s Star) notification() (string, error) {
 
 	return fmt.Sprintf("@%s just %s your message in #%s: https://%s.slack.com/archives/%s/p%s",
 		author, verb, channel,
-		rtm.GetInfo().Team.Domain, channel,
+		slackInfo.Team.Domain, channel,
 		strings.Replace(s.Message.Timestamp, ".", "", -1)), nil
 }
