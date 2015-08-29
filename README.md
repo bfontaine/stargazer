@@ -5,6 +5,8 @@ them to you.
 
 ![](imgs/starred-msg.png)
 
+[![Build Status](https://travis-ci.org/bfontaine/stargazer.svg)](https://travis-ci.org/bfontaine/stargazer)
+
 ## Build
 
     go get github.com/bfontaine/stargazer
