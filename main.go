@@ -14,14 +14,10 @@ var conf struct {
 var api *slack.Client
 var rtm *slack.RTM
 
-var ids2usernames map[string]string
-
 func main() {
 	if err := envconfig.Init(&conf); err != nil {
 		log.Fatal(err)
 	}
-
-	ids2usernames = make(map[string]string)
 
 	api = slack.New(conf.Token)
 	rtm = api.NewRTM()
@@ -36,9 +32,13 @@ func main() {
 			case *slack.StarRemovedEvent:
 				notify(newStar(ev.User, false, ev.Item))
 			case *slack.DisconnectedEvent:
+				log.Println("Disconnection.")
 				return
+			case *slack.ConnectingEvent:
+				log.Println("Connecting....")
+			case *slack.ConnectedEvent:
+				log.Println("Connected.")
 			default:
-				log.Printf("%+v\n", msg)
 				// skip
 			}
 		}
@@ -56,9 +56,5 @@ func notify(s Star) {
 		log.Printf("Error: %v\n", err)
 	}
 
-	rtm.SendMessage(&slack.OutgoingMessage{
-		Channel: ch,
-		Text:    msg,
-		Type:    "message",
-	})
+	api.PostMessage(ch, msg, slackParams)
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/nlopes/slack"
 )
@@ -42,5 +43,13 @@ func (s Star) notification() (string, error) {
 		return "", err
 	}
 
-	return fmt.Sprintf("%s %s your message in #%s", author, verb, s.Message.Channel), nil
+	channel, err := getChannel(s.Message.Channel)
+	if err != nil {
+		return "", err
+	}
+
+	return fmt.Sprintf("@%s just %s your message in #%s: https://%s.slack.com/archives/%s/p%s",
+		author, verb, channel,
+		rtm.GetInfo().Team.Domain, channel,
+		strings.Replace(s.Message.Timestamp, ".", "", -1)), nil
 }
