@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/nlopes/slack"
-	"github.com/vrischmann/envconfig"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/nlopes/slack"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/vrischmann/envconfig"
 )
 
 var conf struct {

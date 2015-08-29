@@ -1,0 +1,30 @@
+{
+	"ImportPath": "github.com/bfontaine/stargazer",
+	"GoVersion": "go1.5",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/nlopes/slack",
+			"Comment": "v0.0.1-55-g32464d1",
+			"Rev": "32464d1ddae5f008cc7f1bf9ca677b275a164ae6"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/assert",
+			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
+		},
+		{
+			"ImportPath": "github.com/stretchr/testify/require",
+			"Rev": "e4ec8152c15fc46bd5056ce65997a07c7d415325"
+		},
+		{
+			"ImportPath": "github.com/vrischmann/envconfig",
+			"Rev": "6731ebe7099c690cd30bbe4e9450ba9ed815269b"
+		},
+		{
+			"ImportPath": "golang.org/x/net/websocket",
+			"Rev": "7654728e381988afd88e58cabfd6363a5ea91810"
+		}
+	]
+}

@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/stretchr/testify/assert"
 )
 
 func TestGotDM(t *testing.T) {

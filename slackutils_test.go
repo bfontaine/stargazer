@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/stretchr/testify/assert"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/stretchr/testify/require"
 )
 
 func TestMemoizeGetter(t *testing.T) {

@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/nlopes/slack"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/nlopes/slack"
 )
 
 var slackParams = slack.NewPostMessageParameters()

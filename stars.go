@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/nlopes/slack"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/nlopes/slack"
 )
 
 // A Message is a starred message

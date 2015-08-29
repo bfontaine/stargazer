@@ -3,8 +3,8 @@ package main
 import (
 	"testing"
 
-	"github.com/nlopes/slack"
-	"github.com/stretchr/testify/assert"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/nlopes/slack"
+	"github.com/bfontaine/stargazer/Godeps/_workspace/src/github.com/stretchr/testify/assert"
 )
 
 func TestStarNotification(t *testing.T) {
