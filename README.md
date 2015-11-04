@@ -1,6 +1,6 @@
 # Stargazer
 
-**Stargazer** is a Slack bot that watch for stars on your messages and report
+**Stargazer** is a Slack bot that watches for stars on your messages and report
 them to you.
 
 ![](imgs/starred-msg.png)
